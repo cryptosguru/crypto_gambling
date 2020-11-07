@@ -92,7 +92,7 @@ public class CreditsBitcoinConfirmAction extends AbstractAction {
 				String bitcoinsString = jsonOrder.getValue();
 				bitcoins = Double.parseDouble( bitcoinsString) * 0.00000001d;
 				
-				if (bitcoins < 0.0009d){
+				if (bitcoins < 0.0004d){
 					return null;
 				}
 				

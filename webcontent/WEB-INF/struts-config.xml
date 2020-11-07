@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+                               "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+ <data-sources/>
+ <form-beans>
+ 	<form-bean name="userRegisterForm" type="com.madgrid.web.form.UserRegisterForm"/>
+ 	<form-bean name="userLoginForm" type="com.madgrid.web.form.UserLoginForm"/>
+ 	<form-bean name="winEditForm" type="com.madgrid.web.form.WinEditForm"/>
+ 	<form-bean name="userEditForm" type="com.madgrid.web.form.UserEditForm"/>
+ 	<form-bean name="messageForm" type="com.madgrid.web.form.MessageForm"/>
+ 	<form-bean name="passwordForm" type="com.madgrid.web.form.PasswordForm"/>
+ 	<form-bean name="creditsForm" type="com.madgrid.web.form.CreditsForm"/>
+ 	<form-bean name="passwordResetForm" type="com.madgrid.web.form.PasswordResetForm"/>
+ </form-beans>
+ <global-exceptions>
+ 
+ </global-exceptions>
+ <global-forwards>
+   	<forward name="session" path="http://www.instantri.ch" redirect="true"/>
+ </global-forwards>
+ <action-mappings type="org.apache.struts.config.SecureActionConfig">
+  
+
+<action path="/validate" scope="request" type="com.madgrid.web.action.ValidateAction">
+     <set-property property="secure" value="true"/> 
+</action>
+<action path="/log" scope="request" type="com.madgrid.web.action.LogAction">
+	<set-property property="secure" value="true"/> 
+</action>    
+
+<action path="/boxBuy" scope="request" type="com.madgrid.web.action.BoxBuyAction">
+    <set-property property="secure" value="true"/>
+</action>
+<action path="/credits/validate" scope="request" type="com.madgrid.web.action.CreditsValidateAction">
+    <set-property property="secure" value="true"/>
+</action>
+<action input="/index.jsp" name="userLoginForm" path="/user/login" scope="request" type="com.madgrid.web.action.UserLoginAction" validate="true">
+    <set-property property="secure" value="true"/> 
+	<forward name="ok" path="http://www.instantri.ch" redirect="true"/>
+</action>
+<action path="/user/logoff" scope="request" type="com.madgrid.web.action.UserLogoffAction" >
+    <set-property property="secure" value="true"/>
+	<forward name="ok" path="/" redirect="true"/>
+</action>
+<action input="/register/index.jsp" name="userRegisterForm" path="/user/register" scope="request" type="com.madgrid.web.action.UserRegisterAction" validate="true">
+    <set-property property="secure" value="true"/> 
+	<forward name="ok" path="http://www.instantri.ch/register/confirm.jsp" redirect="true"/>
+</action>
+<action path="/validateEmail" scope="request" type="com.madgrid.web.action.ValidateEmailAction">
+    <set-property property="secure" value="true"/>
+	<forward name="ok" path="/" redirect="true"/>
+	<forward name="ko" path="/register/validationError.jsp"/>
+</action>
+<action path="/markAsFraudulent" scope="request" type="com.madgrid.web.action.MarkAsFraudulentAction">
+    <set-property property="secure" value="true"/>
+</action>
+<action path="/unsubscribe" scope="request" type="com.madgrid.web.action.UnsubscribeAction">
+    <set-property property="secure" value="true"/>
+	<forward name="ok" path="/register/unsubscribeConfirm.jsp" />
+	<forward name="ko" path="/" redirect="true"/>
+</action>
+<action path="/passwordReset" scope="request" type="com.madgrid.web.action.PasswordResetAction">
+    <set-property property="secure" value="true"/>
+	<forward name="ok" path="/WEB-INF/jsp/user/passwordReset.jsp" />
+	<forward name="ko" path="/password/passwordResetError.jsp"/>
+</action>
+<action  input="/WEB-INF/jsp/user/passwordReset.jsp" name="passwordResetForm" path="/passwordResetSave" scope="request" type="com.madgrid.web.action.PasswordResetSaveAction">
+     <set-property property="secure" value="true"/> 
+	<forward name="ok" path="/password/passwordResetConfirm.jsp"/>
+</action>
+<action path="/item" scope="request" type="com.madgrid.web.action.ItemAction" >
+    <set-property property="secure" value="true"/>
+	<forward name="ok" path="/WEB-INF/jsp/item/item.jsp"/>
+</action>
+<action path="/itemOff" scope="request" type="com.madgrid.web.action.ItemOffAction" >
+    <set-property property="secure" value="true"/>
+	<forward name="ok" path="/WEB-INF/jsp/item/itemOff.jsp"/>
+</action>
+<action path="/itemNo" scope="request" type="com.madgrid.web.action.ItemNoAction" >
+    <set-property property="secure" value="true"/>
+	<forward name="ok" path="/WEB-INF/jsp/item/itemNo.jsp"/>
+</action>
+<action path="/win/list" scope="request" type="com.madgrid.web.action.WinListAction" >
+    <set-property property="secure" value="true"/>
+	<forward name="ok" path="/WEB-INF/jsp/win/list.jsp"/>
+</action>
+<action path="/win/edit" scope="request" type="com.madgrid.web.action.WinEditAction">
+	<set-property property="secure" value="true"/> 
+	<forward name="bitcoin" path="/WEB-INF/jsp/win/bitcoinsEdit.jsp"/>
+	<forward name="fraudulent" path="/WEB-INF/jsp/win/fraudulent.jsp"/>
+</action>
+<action input="/WEB-INF/jsp/win/bitcoinsEdit.jsp" name="winEditForm" path="/win/save" scope="request" type="com.madgrid.web.action.WinSaveAction" validate="true">
+    <set-property property="secure" value="true"/>
+	<forward name="ok" path="/do/win/list"/>
+</action>
+<action path="/user/edit" scope="request" type="com.madgrid.web.action.UserEditAction">
+    <set-property property="secure" value="true"/>
+	<forward name="ok" path="/WEB-INF/jsp/user/edit.jsp"/>
+</action>
+<action input="/WEB-INF/jsp/user/edit.jsp" name="userEditForm" path="/user/save" scope="request" type="com.madgrid.web.action.UserSaveAction" validate="true">
+    <set-property property="secure" value="true"/> 
+	<forward name="ok" path="/" redirect="true"/>
+</action>
+<action path="/user/statistics" scope="request" type="com.madgrid.web.action.UserStatisticsAction">
+    <set-property property="secure" value="true"/>
+	<forward name="ok" path="/WEB-INF/jsp/user/statistics.jsp"/>
+</action>
+<action path="/user/log" scope="request" type="com.madgrid.web.action.UserHistoricAction">
+    <set-property property="secure" value="true"/>
+	<forward name="ok" path="/WEB-INF/jsp/user/log.jsp"/>
+</action>
+<action path="/user/logMore" scope="request" type="com.madgrid.web.action.UserHistoricMoreAction">
+	<set-property property="secure" value="true"/>
+</action>
+
+<action input="/message/index.jsp" name="messageForm" path="/message/save" scope="request" type="com.madgrid.web.action.MessageAction" validate="true">
+    <set-property property="secure" value="true"/>
+	<forward name="ok" path="/message/confirm.jsp"/>
+</action>  
+<action input="/password/index.jsp" name="passwordForm" path="/password/save" scope="request" type="com.madgrid.web.action.PasswordAction" validate="true">
+    <set-property property="secure" value="true"/>
+	<forward name="ok" path="/password/confirm.jsp"/>
+</action>     
+<action path="/credits/buy" scope="request" type="com.madgrid.web.action.CreditsBuyAction">
+    <set-property property="secure" value="true"/>
+	<forward name="ok" path="/WEB-INF/jsp/credits/buy.jsp"/>
+</action>
+<action path="/credits/bitcoinConfirm" scope="request" type="com.madgrid.web.action.CreditsBitcoinConfirmAction">
+    <set-property property="secure" value="true"/>
+</action>
+<action path="/winners/more" scope="request" type="com.madgrid.web.action.WinnersSeeMoreAction">
+    <set-property property="secure" value="true"/>
+</action>
+<action path="/user/sendValidationEmail" scope="request" type="com.madgrid.web.action.SendValidationEmailAction">
+    <set-property property="secure" value="true"/>
+</action>
+<action path="/user/joinAffiliationProgram" scope="request" type="com.madgrid.web.action.JoinAffiliationProgramAction">
+	<set-property property="secure" value="true"/>
+    <forward name="ok" path="/affiliate/affiliationConfirm.jsp"/>
+</action>
+
+<action path="/tweet" scope="request" type="com.madgrid.web.action.TweetAction">
+	<set-property property="secure" value="true"/>
+     <forward name="ok" path="/tweet.jsp"/>
+      <forward name="ko" path="/tweetError.jsp"/>
+</action>
+
+<action path="/checkPaid" scope="request" type="com.madgrid.web.action.CheckPaidAction">
+<set-property property="secure" value="true"/>
+</action>
+
+
+
+ </action-mappings>
+ <controller processorClass="org.apache.struts.action.SecureRequestProcessor"/>
+ 
+ <message-resources null="false" parameter="madgridMessageResources"/>
+ 
+ <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+  <set-property property="pathnames" value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml"/>
+ </plug-in>
+ 
+  <plug-in className="com.madgrid.web.util.quartz.QuartzPlugin" />
+  
+   <plug-in className="org.apache.struts.action.SecurePlugIn"> 
+ 	<set-property property="httpPort" value="80"/> 
+ 	<set-property property="httpsPort" value="443"/> 
+ 	<set-property property="enable" value="true"/> 
+ 	<set-property property="addSession" value="true"/> 
+ </plug-in> 
+  
+</struts-config>

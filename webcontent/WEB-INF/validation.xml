@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE form-validation PUBLIC "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.0//EN"
+                                 "http://jakarta.apache.org/commons/dtds/validator_1_0.dtd">
+<form-validation>
+ <global>
+ 	 <constant>
+	   <constant-name>phone</constant-name>
+	   <constant-value>^\(?(\d{3})\)?[-| ]?(\d{3})[-| ]?(\d{4})$</constant-value>
+	  </constant>
+	  <constant>
+	   <constant-name>zip</constant-name>
+	   <constant-value>^\d{5}\d*$</constant-value>
+	  </constant>
+ </global>
+	<formset>
+		<form name="winEditForm">
+			<field depends="required" property="bitcoinAddress">
+   			</field>
+		</form>
+		
+		<form name="messageForm">
+			<field depends="required" property="messageType">
+   			</field>
+   			<field depends="required,maxlength" property="subject">
+   				<arg1 key="${var:maxlength}" name="maxlength" resource="false"/>
+   			 	<var>
+		     		<var-name>maxlength</var-name>
+		     		<var-value>1000</var-value>
+		    	</var>
+   			</field>
+   			<field depends="required,maxlength" property="text">
+   				<arg1 key="${var:maxlength}" name="maxlength" resource="false"/>
+   			 	<var>
+		     		<var-name>maxlength</var-name>
+		     		<var-value>9000</var-value>
+		    	</var>
+   			</field>
+   			<field depends="required,email,maxlength" property="email">
+   			    <arg1 key="${var:maxlength}" name="maxlength" resource="false"/>
+   			 	<var>
+		     		<var-name>maxlength</var-name>
+		     		<var-value>250</var-value>
+		    	</var>
+   			</field>
+		</form>
+		
+		<form name="passwordForm">
+			<field depends="required,email" property="email">
+   			</field>
+		</form>
+    </formset>
+</form-validation>

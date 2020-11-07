@@ -1,0 +1,34 @@
+TODO
+-Mostrar aviso de cookies
+-Cambiar contraseñas arsys y dinahosting
+-Habilitar compresion y especificar tiempo de cache
+
+-En admin ponr un boton de reiniciar juego
+-En el front si hay más de un premio por pagar hacer una página para pagarlos todos de golpe
+
+
+-Usando la api de coinapult implementar un botón de enviar bitcoins en el backoffice para pagar premios facilmente
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+

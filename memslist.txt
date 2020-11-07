@@ -1,0 +1,3 @@
+name	Instantri.ch
+email	amandris@hotmail.com
+user	instantrich

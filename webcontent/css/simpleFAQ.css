@@ -1,0 +1,6 @@
+#faqList li { list-style: none; }
+#faqList .question {font-size:17px;padding-left: 18px;margin-top:8px;background: transparent url('/img/plus.png') left center no-repeat;}
+#faqList li.simpleFAQShowing .question {background: transparent url('/img/minus.png') left center no-repeat;}
+#faqList .simpleFAQHover { color: #EC0B4F; }
+#faqList .answer {font-size:13px;margin-left: 1em;padding: 0.9em;}
+#faqList .answer p {text-align: justify;}

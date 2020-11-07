@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<link href="/css/instantrich.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript">
+			var seconds = 11;
+			function showTime(){
+				seconds--;
+				if(seconds <=0){
+					window.location.reload();
+				} else{
+					var elm = document.getElementById('timeId');
+					elm.innerHTML = seconds;
+					setTimeout("showTime()", 1000);
+				}
+			}
+			
+			$(document).ready(function(){
+				showTime();
+			});
+		</script>
+	</head>
+	<body>
+		<p style="text-align:center;">
+			The session is over.
+		</p>
+		<p style="text-align:center;">
+			This page will be realoaded in <span id="timeId" style="font-weight:bold;">10</span> seconds.
+		</p>
+		<p style="text-align:center;">
+			Click <a href="javascript:window.location.reload();" style="text-decoration:underline;">here</a> if you want to reload now.
+		</p> 
+	</body>
+</html>

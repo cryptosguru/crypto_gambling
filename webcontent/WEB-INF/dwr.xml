@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dwr PUBLIC "-//GetAhead Limited//DTD Direct Web Remoting 2.0//EN"
+"http://getahead.ltd.uk/dwr/dwr20.dtd">
+
+<dwr>
+	<allow>
+		<create creator="new" javascript="JDwrTools">
+        	<param name="class" value="com.madgrid.web.util.dwr.DwrTools"/>
+        </create>
+	</allow>
+</dwr>

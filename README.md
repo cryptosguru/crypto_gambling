@@ -1,4 +1,4 @@
-Source code from the on-line gambling page instantri.ch which was online from 2015 to 2018.
+Source code from the on-line gambling page.
 
 ![Web interface](https://github.com/amandris/madgrid-web-bitcoin/blob/master/webcontent/img/fb.png)
 
